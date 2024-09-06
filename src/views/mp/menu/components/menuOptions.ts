@@ -9,7 +9,7 @@ export default [
   },
   {
     value: 'click',
-    label: 'CLICK'
+    label: '点击回复'
   },
   {
     value: 'article_view_limited',

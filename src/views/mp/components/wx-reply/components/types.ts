@@ -4,8 +4,7 @@ enum ReplyType {
   Voice = 'voice',
   Video = 'video',
   Music = 'music',
-  Text = 'text',
-  DynamicText = 'dynamicText'
+  Text = 'text'
 }
 
 interface _Reply {

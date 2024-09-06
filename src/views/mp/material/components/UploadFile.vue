@@ -31,7 +31,7 @@ import {
 
 const message = useMessage()
 
-const props = defineProps<{ type: UploadType }>()
+const props = defineProps<{ type: UploadType, id: string | number }>()
 
 const fileList = ref<UploadUserFile[]>([])
 const emit = defineEmits<{
@@ -41,8 +41,15 @@ const emit = defineEmits<{
 const uploadData: UploadData = reactive({
   type: UploadType.Image,
   title: '',
-  introduction: ''
+  introduction: '',
+  accountId: props.id
 })
+
+// 监听 props.id 的变化
+watch(() => props.id, (newId) => {
+  uploadData.accountId = newId
+})
+
 
 /** 上传前检查 */
 const onBeforeUpload = props.type === UploadType.Image ? beforeImageUpload : beforeVoiceUpload

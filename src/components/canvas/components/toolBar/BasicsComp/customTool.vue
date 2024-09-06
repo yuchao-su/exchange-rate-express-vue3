@@ -161,33 +161,17 @@
                   :before-upload="beforeAvatarUpload"
                   :show-file-list="false"
                 >
-                  <img
-                    v-if="
-                      activeComponent.componentContent.imgData[
+                  <img v-if="activeComponent.componentContent.imgData[
                         activeComponent.componentContent.imgBoxActive
-                      ].src
-                    "
-                    :src="
-                      activeComponent.componentContent.imgData[
+                      ].src" :src="activeComponent.componentContent.imgData[
                         activeComponent.componentContent.imgBoxActive
-                      ].src
-                    "
-                    class="avatar"
-                  />
-                  <div
-                    v-if="
-                      activeComponent.componentContent.imgData[
-                        activeComponent.componentContent.imgBoxActive
-                      ].src
-                    "
-                    class="tips"
-                  >
-                    更换图片
+                      ].src" class="single-img__img" />
+                  <div v-else>
+                    <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+                    <div class="el-upload__text">
+                      <em>选择图片</em>
+                    </div>
                   </div>
-                  <el-icon v-else class="el-icon-plus avatar-uploader-icon">
-                    <el-icon-plus />
-                  </el-icon>
-                  <span>添加图片</span>
                 </el-upload>
               </div>
               <div class="addLink">
@@ -197,7 +181,6 @@
                       activeComponent.componentContent.imgBoxActive
                     ].linkObj
                   "
-                  title="链接"
                 />
               </div>
             </div>
@@ -210,7 +193,7 @@
 
 <script setup>
 import {toRefs, reactive, computed, onMounted, ref} from 'vue';
-import { Plus as ElIconPlus } from '@element-plus/icons-vue'
+import { UploadFilled} from '@element-plus/icons-vue'
 import ToolSelectLink from '../toolModule/tool-select-link.vue'
 import {getAccessToken, getTenantId} from "@/utils/auth";
 import api from '@/components/canvas/components/canvasShow/config/api'
@@ -922,89 +905,35 @@ const { layoutList, fileUploadApi } = toRefs(data)
           height: 93px;
         }
       }
-      .addImgTit {
-        margin-top: 20px;
-        color: #ff3737;
-        font-size: 12px;
-      }
+
       .addImgBox {
-        width: 100%;
-        margin-top: 10px;
-        box-sizing: border-box;
-        position: relative;
-        padding-bottom: 50px;
-        .addImgBoxInner {
-          background: #f6f7f9;
-          display: flex;
-          align-items: center;
-        }
+        margin-top: 30px;
         .addImg {
-          width: 60px;
-          height: 60px;
-          margin-right: 10px;
           :deep(.el-upload-dragger) {
-            width: 60px;
-            height: 60px;
-            text-align: center;
-            padding: 0;
-            .avatar {
-              width: 100%;
-              height: 100%;
-            }
-            i {
-              margin: 10px 0 5px;
-              color: var(--el-color-primary);
-            }
-            .el-icon-plus:before {
-              color: var(--el-color-primary);
-            }
-            span {
-              display: block;
-              font-size: 12px;
-              color: var(--el-color-primary);
-            }
-          }
-        }
-        .addLink {
-          flex: 1;
-          :deep(.link-select) {
-            margin-bottom: 0;
-            line-height: 60px;
             width: 100%;
-            .link-select__warp {
-              display: flex;
-              align-items: center;
+            height: 264px;
+            padding: 0;
+            text-align: center;
+            .el-icon--upload{
+              margin-top: 60px;
             }
-            .module-box__title {
-              font-size: 12px;
-              color: #333333;
-              margin-bottom: 0;
-              height: auto;
-              .module-box__label {
-                line-height: 60px;
-              }
+            .el-upload__text {
+              line-height: 40px;
             }
-            .link-select__select {
-              flex: 1;
-              .el-input__wrapper {
-                border: none;
-                background: none;
-                font-size: 12px;
-                color: var(--el-color-primary);
-                box-shadow: none;
-              }
-              .el-input__inner::placeholder {
-                color: var(--el-color-primary);
-              }
-              .el-icon-arrow-up:before {
-                color: var(--el-color-primary);
-              }
+            .el-upload__tip {
+              line-height: 1em;
             }
-            .link-select__confirm {
+
+            .single-img__img {
               position: absolute;
+              max-width: 100%;
+              height: 100%;
+              max-height: 100%;
+              margin: auto;
+              top: 0;
+              right: 0;
               bottom: 0;
               left: 0;
-              width: 100%;
             }
           }
         }

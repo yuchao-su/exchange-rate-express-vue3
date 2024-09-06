@@ -26,6 +26,6 @@ export const getUserPage = (query) => {
 // 同步公众号粉丝
 export const syncUser = (accountId) => {
   return request.post({
-    url: '/mp/user/sync?accountId=' + accountId
+    url: '/mp/tag/sync?accountId=' + accountId
   })
 }

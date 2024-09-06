@@ -79,7 +79,7 @@
 import * as DiscountCouponApi from '@/api/mall/product/discountCoupon'
 import {dateFormatter} from "@/utils/formatTime";
 import download from '@/utils/download'
-import {ref} from "_vue@3.3.4@vue";
+import {ref} from "vue";
 const { t } = useI18n() // 国际化
 const message = useMessage() // 消息弹窗
 const multipleTableRef = ref()

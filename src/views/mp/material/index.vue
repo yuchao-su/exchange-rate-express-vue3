@@ -28,6 +28,7 @@
         <UploadFile
           v-hasPermi="['mp:material:upload-permanent']"
           :type="UploadType.Image"
+          :id="queryParams.accountId"
           @uploaded="getList"
         >
           支持 bmp/png/jpeg/jpg/gif 格式，大小不超过 2M
@@ -51,6 +52,7 @@
         <UploadFile
           v-hasPermi="['mp:material:upload-permanent']"
           :type="UploadType.Voice"
+          :id="queryParams.accountId"
           @uploaded="getList"
         >
           格式支持 mp3/wma/wav/amr，文件大小不超过 2M，播放长度不超过 60s
@@ -171,5 +173,6 @@ const handleDelete = async (id: number) => {
   await message.confirm('此操作将永久删除该文件, 是否继续?')
   await MpMaterialApi.deletePermanentMaterial(id)
   message.alertSuccess('删除成功')
+  handleQuery()
 }
 </script>

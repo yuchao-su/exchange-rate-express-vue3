@@ -1,5 +1,5 @@
 <template>
-  <el-input type="textarea" :rows="5" placeholder="请输入内容111" v-model="content" />
+  <el-input type="textarea" :rows="5" placeholder="请输入内容" v-model="content" />
 </template>
 
 <script setup lang="ts">
